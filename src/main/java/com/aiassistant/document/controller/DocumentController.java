@@ -21,4 +21,10 @@ public class DocumentController {
     public Document uploadDocument(@RequestBody @Valid DocumentUploadRequest request , @RequestHeader("X-User-Id") String userId) {
         return documentService.upload(request, userId);
     }
+
+    @PostMapping("/upload")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Document uploadFile(@RequestParam("file") MultipartFile file, @RequestHeader("X-User-Id") String userId) {
+        return documentService.uploadFile(file, userId);
+    }
 }
